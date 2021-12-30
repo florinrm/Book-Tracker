@@ -48,15 +48,13 @@
         android:layout_gravity="center"
         android:text="@string/login" />
 
-    <TextView
-        android:id="@+id/create_account"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/create_account_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="30dp"
-        android:textSize="15sp"
+        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:fontFamily="@font/playfair_display"
         android:text="@string/not_having_an_account_create_one" />
 
 

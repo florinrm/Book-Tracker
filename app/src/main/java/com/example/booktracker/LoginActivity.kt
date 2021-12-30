@@ -1,8 +1,11 @@
 package com.example.booktracker
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.booktracker.databinding.ActivityLoginBinding
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import timber.log.Timber
 
@@ -18,12 +21,20 @@ class LoginActivity : AppCompatActivity() {
         Timber.plant(Timber.DebugTree())
 
         auth = FirebaseAuth.getInstance()
+
+        initUi()
     }
 
-    override fun onStart() {
-        super.onStart()
-        if (auth.currentUser == null) {
-            login()
+    private fun initUi() {
+        binding.loginButton.setOnClickListener {
+            if (auth.currentUser == null) {
+                login()
+            }
+        }
+
+        binding.createAccountButton.setOnClickListener {
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
         }
     }
 
@@ -31,8 +42,13 @@ class LoginActivity : AppCompatActivity() {
         val email = binding.loginEmail.text.toString()
         val password = binding.loginPassword.text.toString()
 
-        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this) {
+            if (it.isSuccessful) {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Login failed.", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
