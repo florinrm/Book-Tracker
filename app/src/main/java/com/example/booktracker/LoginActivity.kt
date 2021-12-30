@@ -28,5 +28,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun login() {
+        val email = binding.loginEmail.text.toString()
+        val password = binding.loginPassword.text.toString()
+
+        auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+
+        }
     }
 }
