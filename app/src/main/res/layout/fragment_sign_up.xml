@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".LoginActivity">
+    tools:context=".signup.SignUpFragment">
 
     <TextView
-        android:id="@+id/app_title_login"
+        android:id="@+id/app_title_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/login_email"
+        android:id="@+id/signup_email"
         android:layout_marginTop="70dp"
         android:autofillHints="e-mail address"
         android:inputType="textEmailAddress"
@@ -31,7 +31,7 @@
     <EditText
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:id="@+id/login_password"
+        android:id="@+id/signup_password"
         android:layout_marginTop="30dp"
         android:autofillHints="e-mail address"
         android:inputType="textPassword"
@@ -40,22 +40,12 @@
         tools:ignore="LabelFor" />
 
     <Button
-        android:id="@+id/login_button"
+        android:id="@+id/signup_button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:gravity="center"
         android:layout_gravity="center"
-        android:text="@string/login" />
-
-    <Button
-        android:id="@+id/create_account_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:text="@string/not_having_an_account_create_one" />
-
+        android:text="@string/create_new_account" />
 
 </LinearLayout>
