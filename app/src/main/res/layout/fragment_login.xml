@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout xmlns:tools="http://schemas.android.com/tools"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="loginModelView"
+            type="com.example.booktracker.login.LoginViewModel" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -46,6 +54,8 @@
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:gravity="center"
+            android:enabled="true"
+            android:onClick="@{() -> loginModelView.login()}"
             android:text="@string/login" />
 
         <Button
@@ -55,6 +65,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:gravity="center"
+            android:enabled="true"
             android:text="@string/not_having_an_account_create_one" />
     </LinearLayout>
 </layout>

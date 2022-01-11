@@ -12,19 +12,22 @@ import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
+    private lateinit var binding: FragmentLoginBinding
+    private lateinit var viewModel: LoginViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val binding: FragmentLoginBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_login, container, false)
+    ): View {
+        binding = DataBindingUtil.inflate(
+            inflater, R.layout.fragment_login, container, false
+        )
+        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
 
         binding.createAccountButton.setOnClickListener {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
         }
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false)
+        return binding.root
     }
 }
