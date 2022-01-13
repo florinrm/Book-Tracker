@@ -1,21 +1,20 @@
 package com.example.booktracker.login
 
-import androidx.lifecycle.LiveData
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.example.booktracker.auth.AuthAppRepository
+import com.google.firebase.auth.FirebaseUser
 
-class LoginViewModel : ViewModel() {
-    private var _password = MutableLiveData<String>()
-    private val password: LiveData<String>
-        get() = _password
+class LoginViewModel(application: Application) : AndroidViewModel(application) {
+    val user: MutableLiveData<FirebaseUser>
+    private val authAppRepository: AuthAppRepository = AuthAppRepository(application)
 
-    private var _username = MutableLiveData<String>()
-    private val username: LiveData<String>
-        get() = _username
-
-
-    fun login() {
-
+    init {
+        user = authAppRepository.userLiveData
     }
 
+    fun login(email: String, password: String) {
+        authAppRepository.login(email, password)
+    }
 }
