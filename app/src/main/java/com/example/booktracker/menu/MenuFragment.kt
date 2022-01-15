@@ -24,7 +24,12 @@ class MenuFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
 
         binding.menuModelView = viewModel
+        setOnClickListeners()
 
+        return binding.root
+    }
+
+    private fun setOnClickListeners() {
         binding.addBookButton.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToAddBookFragment())
         }
@@ -34,6 +39,16 @@ class MenuFragment : Fragment() {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToLoginFragment3())
         }
 
-        return binding.root
+        binding.seeReadBooksButton.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToDoneListFragment())
+        }
+
+        binding.seeReadingBooksButton.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToReadingListFragment())
+        }
+
+        binding.seeToReadBooksButton.setOnClickListener {
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToToReadFragment())
+        }
     }
 }
