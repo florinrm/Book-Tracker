@@ -1,5 +1,7 @@
 package com.example.booktracker.database
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.booktracker.domain.ReadBook
 import com.example.booktracker.domain.ReadingBook
 import com.example.booktracker.domain.ToReadBook
@@ -35,9 +37,11 @@ object DatabaseRepository {
                     )
                     database.child(firebaseUser.uid).setValue(user)
                 } else {
-                    database.child(firebaseUser.uid).setValue(User(
-                        readBooks = listOf(book),
-                    ))
+                    database.child(firebaseUser.uid).setValue(
+                        User(
+                            readBooks = listOf(book),
+                        )
+                    )
                 }
             }
         }
@@ -60,9 +64,11 @@ object DatabaseRepository {
                     )
                     database.child(firebaseUser.uid).setValue(user)
                 } else {
-                    database.child(firebaseUser.uid).setValue(User(
-                        toReadBooks = listOf(book),
-                    ))
+                    database.child(firebaseUser.uid).setValue(
+                        User(
+                            toReadBooks = listOf(book),
+                        )
+                    )
                 }
             }
         }
@@ -85,12 +91,65 @@ object DatabaseRepository {
                     )
                     database.child(firebaseUser.uid).setValue(user)
                 } else {
-                    database.child(firebaseUser.uid).setValue(User(
-                        readingBooks = listOf(book),
-                    ))
+                    database.child(firebaseUser.uid).setValue(
+                        User(
+                            readingBooks = listOf(book),
+                        )
+                    )
                 }
             }
         }
+    }
+
+    fun getReadBooks(): LiveData<List<ReadBook>> {
+        val readBooks = MutableLiveData<List<ReadBook>>()
+        if (firebaseUser != null) {
+            Timber.d("Fetching read books for user ${firebaseUser.uid} in database")
+            database.child(firebaseUser.uid).get().addOnSuccessListener { data ->
+                val value = data.getValue<User>()
+                if (value != null) {
+                    Timber.d("value $value")
+                    val books = value.readBooks.filter { !it.isDefaultValue() }
+                    Timber.d("books $books")
+                    readBooks.postValue(books)
+                }
+            }
+        }
+        return readBooks
+    }
+
+    fun getToReadBooks(): LiveData<List<ToReadBook>> {
+        val toReadBooks = MutableLiveData<List<ToReadBook>>()
+        if (firebaseUser != null) {
+            Timber.d("Fetching to read books for user ${firebaseUser.uid} in database")
+            database.child(firebaseUser.uid).get().addOnSuccessListener { data ->
+                val value = data.getValue<User>()
+                if (value != null) {
+                    Timber.d("value $value")
+                    val books = value.toReadBooks.filter { !it.isDefaultValue() }
+                    Timber.d("books $books")
+                    toReadBooks.postValue(books)
+                }
+            }
+        }
+        return toReadBooks
+    }
+
+    fun getReadingBooks(): LiveData<List<ReadingBook>> {
+        val readingBooks = MutableLiveData<List<ReadingBook>>()
+        if (firebaseUser != null) {
+            Timber.d("Fetching reading books for user ${firebaseUser.uid} in database")
+            database.child(firebaseUser.uid).get().addOnSuccessListener { data ->
+                val value = data.getValue<User>()
+                if (value != null) {
+                    Timber.d("value $value")
+                    val books = value.readingBooks.filter { !it.isDefaultValue() }
+                    Timber.d("books $books")
+                    readingBooks.postValue(books)
+                }
+            }
+        }
+        return readingBooks
     }
 
     fun createUser() {
