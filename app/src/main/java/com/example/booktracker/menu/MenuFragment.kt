@@ -10,7 +10,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentMenuBinding
-import com.example.booktracker.login.LoginViewModel
 
 class MenuFragment : Fragment() {
     private lateinit var binding: FragmentMenuBinding

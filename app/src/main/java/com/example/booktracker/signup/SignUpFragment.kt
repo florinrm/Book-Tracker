@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.booktracker.MenuActivity
 import com.example.booktracker.R
+import com.example.booktracker.database.DatabaseRepository
 import com.example.booktracker.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
@@ -30,6 +31,7 @@ class SignUpFragment : Fragment() {
 
         viewModel.user.observe(viewLifecycleOwner, { user ->
             if (user != null) {
+                DatabaseRepository.createUser()
                 Toast.makeText(activity, "User created!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(activity, MenuActivity::class.java)
                 startActivity(intent)

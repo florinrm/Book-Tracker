@@ -4,12 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentAddBookBinding
+import com.example.booktracker.domain.ReadBook
+import com.example.booktracker.domain.ReadingBook
+import com.example.booktracker.domain.ToReadBook
 
 class AddBookFragment : Fragment() {
     private lateinit var binding: FragmentAddBookBinding
@@ -24,6 +28,7 @@ class AddBookFragment : Fragment() {
 
         addTextToRadioButtons()
         enableFieldForReadBook()
+        addOnClickListeners()
 
         return binding.root
     }
@@ -55,5 +60,49 @@ class AddBookFragment : Fragment() {
             binding.addReviewEditview.isGone = true
             binding.addReviewLabel.isGone = true
         }
+    }
+
+    private fun addOnClickListeners() {
+        binding.addBookButton.setOnClickListener {
+            addBook()
+            Toast.makeText(activity, "Book added!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun addBook() {
+        when {
+            binding.radioButton.isChecked -> {
+                addReadBook()
+            }
+            binding.radioButton2.isChecked -> {
+                addReadingBook()
+            }
+            binding.radioButton3.isChecked -> {
+                addToReadBook()
+            }
+        }
+    }
+
+    private fun addReadBook() {
+        viewModel.addReadBook(ReadBook(
+            title = binding.addTitleEditview.text.toString(),
+            author = binding.addAuthorEditview.text.toString(),
+            grade = binding.addGradeEditview.text.toString().toInt(),
+            review = binding.addReviewEditview.text.toString()
+        ))
+    }
+
+    private fun addReadingBook() {
+        viewModel.addReadingBook(ReadingBook(
+            title = binding.addTitleEditview.text.toString(),
+            author = binding.addAuthorEditview.text.toString(),
+        ))
+    }
+
+    private fun addToReadBook() {
+        viewModel.addToReadBook(ToReadBook(
+            title = binding.addTitleEditview.text.toString(),
+            author = binding.addAuthorEditview.text.toString(),
+        ))
     }
 }

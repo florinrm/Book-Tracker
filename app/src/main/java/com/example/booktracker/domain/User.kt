@@ -1,8 +1,11 @@
 package com.example.booktracker.domain
 
 data class User(
-    val userId: String,
-    val readBooks: List<ReadBook>,
-    val toReadBooks: List<ToReadBook>,
-    val readingBooks: List<ReadingBook>
-)
+    val readBooks: List<ReadBook> = listOf(ReadBook()),
+    val toReadBooks: List<ToReadBook> = listOf(ToReadBook()),
+    val readingBooks: List<ReadingBook> = listOf(ReadingBook())
+) {
+    override fun toString(): String {
+        return "User(readBooks=$readBooks, toReadBooks=$toReadBooks, readingBooks=$readingBooks)"
+    }
+}
