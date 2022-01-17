@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentDoneListBinding
 import timber.log.Timber
@@ -29,7 +30,7 @@ class DoneListFragment : Fragment() {
 
     private fun initUi() {
         viewModel.loadBooks().observe(viewLifecycleOwner, { books ->
-            binding.readBooksList.adapter = DoneListRecycleViewAdapter(books)
+            binding.readBooksList.adapter = DoneListRecycleViewAdapter(books, findNavController())
         })
     }
 }

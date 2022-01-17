@@ -2,11 +2,15 @@ package com.example.booktracker.done
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booktracker.databinding.BookItemBinding
 import com.example.booktracker.domain.ReadBook
 
-class DoneListRecycleViewAdapter(private val books: List<ReadBook>) :
+class DoneListRecycleViewAdapter(
+    private val books: List<ReadBook>,
+    private val navController: NavController
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = BookItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -21,6 +25,16 @@ class DoneListRecycleViewAdapter(private val books: List<ReadBook>) :
 
     internal inner class AllReadBooksViewHolder(private val viewBinding: BookItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
+
+        init {
+            viewBinding.root.setOnClickListener {
+                navController.navigate(
+                    DoneListFragmentDirections
+                        .actionDoneListFragmentToReadBookFragment()
+                )
+            }
+        }
+
         fun bind(position: Int) {
             val book = books[position]
             viewBinding.bookAuthorItem.text = book.author
