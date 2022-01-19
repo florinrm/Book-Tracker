@@ -28,7 +28,7 @@ class ToReadFragment : Fragment() {
 
     private fun initUi() {
         viewModel.loadBooks().observe(viewLifecycleOwner, { books ->
-            binding.toReadBooksList.adapter = ToReadRecycleViewAdapter(books, findNavController())
+            binding.toReadBooksList.adapter = ToReadRecycleViewAdapter(books)
         })
     }
 }

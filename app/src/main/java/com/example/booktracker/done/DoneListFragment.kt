@@ -30,7 +30,7 @@ class DoneListFragment : Fragment() {
 
     private fun initUi() {
         viewModel.loadBooks().observe(viewLifecycleOwner, { books ->
-            binding.readBooksList.adapter = DoneListRecycleViewAdapter(books, findNavController())
+            binding.readBooksList.adapter = DoneListRecycleViewAdapter(books)
         })
     }
 }

@@ -8,8 +8,7 @@ import com.example.booktracker.databinding.BookItemBinding
 import com.example.booktracker.domain.ReadBook
 
 class DoneListRecycleViewAdapter(
-    private val books: List<ReadBook>,
-    private val navController: NavController
+    private val books: List<ReadBook>
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
