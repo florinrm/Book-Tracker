@@ -17,4 +17,6 @@
     <string name="review">Review</string>
     <string name="grade">Grade</string>
     <string name="add_book">Add book</string>
+    <string name="book_cover">Book cover</string>
+    <string name="check_for_nearby_libraries">Check for nearby libraries</string>
 </resources>

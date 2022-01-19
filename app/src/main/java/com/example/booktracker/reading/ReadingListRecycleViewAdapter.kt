@@ -26,15 +26,6 @@ class ReadingListRecycleViewAdapter(
     internal inner class AllReadingBooksViewHolder(private val viewBinding: BookItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        init {
-            viewBinding.root.setOnClickListener {
-                navController.navigate(
-                    ReadingListFragmentDirections
-                        .actionReadingListFragmentToReadingBookFragment()
-                )
-            }
-        }
-
         fun bind(position: Int) {
             val book = books[position]
             viewBinding.bookAuthorItem.text = book.author

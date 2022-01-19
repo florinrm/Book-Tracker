@@ -1,5 +1,7 @@
 package com.example.booktracker.menu
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -48,6 +50,14 @@ class MenuFragment : Fragment() {
 
         binding.seeToReadBooksButton.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToToReadFragment())
+        }
+
+        binding.checkBookShopsButton.setOnClickListener {
+            // TODO: launch Google Maps for nearby book shops
+            val gmmIntentUri = Uri.parse("geo:0,0?q=book+shops")
+            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+            mapIntent.setPackage("com.google.android.apps.maps")
+            startActivity(mapIntent)
         }
     }
 }

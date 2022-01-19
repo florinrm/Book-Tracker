@@ -37,39 +37,15 @@
         android:id="@+id/doneListFragment"
         android:name="com.example.booktracker.done.DoneListFragment"
         android:label="fragment_done_list"
-        tools:layout="@layout/fragment_done_list" >
-        <action
-            android:id="@+id/action_doneListFragment_to_readBookFragment"
-            app:destination="@id/readBookFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_done_list"/>
     <fragment
         android:id="@+id/readingListFragment"
         android:name="com.example.booktracker.reading.ReadingListFragment"
         android:label="fragment_reading_list"
-        tools:layout="@layout/fragment_reading_list" >
-        <action
-            android:id="@+id/action_readingListFragment_to_readingBookFragment"
-            app:destination="@id/readingBookFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_reading_list"/>
     <fragment
         android:id="@+id/toReadFragment"
         android:name="com.example.booktracker.toread.ToReadFragment"
         android:label="fragment_to_read"
-        tools:layout="@layout/fragment_to_read" >
-        <action
-            android:id="@+id/action_toReadFragment_to_toReadBookFragment"
-            app:destination="@id/toReadBookFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/toReadBookFragment"
-        android:name="com.example.booktracker.toread.ToReadBookFragment"
-        android:label="ToReadBookFragment" />
-    <fragment
-        android:id="@+id/readBookFragment"
-        android:name="com.example.booktracker.done.ReadBookFragment"
-        android:label="ReadBookFragment" />
-    <fragment
-        android:id="@+id/readingBookFragment"
-        android:name="com.example.booktracker.reading.ReadingBookFragment"
-        android:label="ReadingBookFragment" />
+        tools:layout="@layout/fragment_to_read"/>
 </navigation>

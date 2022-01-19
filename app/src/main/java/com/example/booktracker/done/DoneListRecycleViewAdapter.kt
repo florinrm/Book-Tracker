@@ -26,15 +26,6 @@ class DoneListRecycleViewAdapter(
     internal inner class AllReadBooksViewHolder(private val viewBinding: BookItemBinding) :
         RecyclerView.ViewHolder(viewBinding.root) {
 
-        init {
-            viewBinding.root.setOnClickListener {
-                navController.navigate(
-                    DoneListFragmentDirections
-                        .actionDoneListFragmentToReadBookFragment()
-                )
-            }
-        }
-
         fun bind(position: Int) {
             val book = books[position]
             viewBinding.bookAuthorItem.text = book.author
