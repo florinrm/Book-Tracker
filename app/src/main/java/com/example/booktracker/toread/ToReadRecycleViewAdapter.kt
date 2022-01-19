@@ -9,8 +9,7 @@ import com.example.booktracker.domain.ToReadBook
 import timber.log.Timber
 
 class ToReadRecycleViewAdapter(
-    private val books: List<ToReadBook>,
-    private val navController: NavController
+    private val books: List<ToReadBook>
 ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
