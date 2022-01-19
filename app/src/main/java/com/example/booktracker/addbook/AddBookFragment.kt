@@ -9,6 +9,7 @@ import androidx.core.view.isGone
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentAddBookBinding
 import com.example.booktracker.domain.ReadBook
@@ -65,7 +66,10 @@ class AddBookFragment : Fragment() {
     private fun addOnClickListeners() {
         binding.addBookButton.setOnClickListener {
             addBook()
-            Toast.makeText(activity, "Book added!", Toast.LENGTH_SHORT).show()
+        }
+
+        binding.cancelAddBookButton.setOnClickListener {
+            findNavController().navigate(AddBookFragmentDirections.actionAddBookFragmentToMenuFragment())
         }
     }
 
@@ -83,26 +87,84 @@ class AddBookFragment : Fragment() {
         }
     }
 
+    private fun checkFieldsValidity(): Boolean {
+        val title = binding.addTitleEditview.text.toString()
+        val author = binding.addAuthorEditview.text.toString()
+
+        if (title.isEmpty() || author.isEmpty()) {
+            Toast.makeText(
+                activity,
+                "Title and/or author cannot be empty!",
+                Toast.LENGTH_SHORT
+            ).show()
+            return false
+        }
+
+        if (binding.radioButton.isChecked) {
+            val grade = binding.addGradeEditview.text.toString().toIntOrNull()
+            val review = binding.addReviewEditview.text.toString()
+
+            if (review.isEmpty()) {
+                Toast.makeText(
+                    activity,
+                    "Review cannot be empty!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return false
+            }
+
+            if (grade == null || grade < 0 || grade > 10) {
+                Toast.makeText(
+                    activity,
+                    "Invalid grade value!",
+                    Toast.LENGTH_SHORT
+                ).show()
+                return false
+            }
+        }
+
+        return true
+    }
+
+    private fun addBookSuccesfully() {
+        Toast.makeText(activity, "Book added!", Toast.LENGTH_SHORT).show()
+        findNavController().navigate(AddBookFragmentDirections.actionAddBookFragmentToMenuFragment())
+    }
+
     private fun addReadBook() {
-        viewModel.addReadBook(ReadBook(
-            title = binding.addTitleEditview.text.toString(),
-            author = binding.addAuthorEditview.text.toString(),
-            grade = binding.addGradeEditview.text.toString().toInt(),
-            review = binding.addReviewEditview.text.toString()
-        ))
+        if (checkFieldsValidity()) {
+            viewModel.addReadBook(
+                ReadBook(
+                    title = binding.addTitleEditview.text.toString(),
+                    author = binding.addAuthorEditview.text.toString(),
+                    grade = binding.addGradeEditview.text.toString().toInt(),
+                    review = binding.addReviewEditview.text.toString()
+                )
+            )
+
+            addBookSuccesfully()
+        }
     }
 
     private fun addReadingBook() {
-        viewModel.addReadingBook(ReadingBook(
-            title = binding.addTitleEditview.text.toString(),
-            author = binding.addAuthorEditview.text.toString(),
-        ))
+        if (checkFieldsValidity()) {
+            viewModel.addReadingBook(ReadingBook(
+                title = binding.addTitleEditview.text.toString(),
+                author = binding.addAuthorEditview.text.toString(),
+            ))
+
+            addBookSuccesfully()
+        }
     }
 
     private fun addToReadBook() {
-        viewModel.addToReadBook(ToReadBook(
-            title = binding.addTitleEditview.text.toString(),
-            author = binding.addAuthorEditview.text.toString(),
-        ))
+        if (checkFieldsValidity()) {
+            viewModel.addReadingBook(ReadingBook(
+                title = binding.addTitleEditview.text.toString(),
+                author = binding.addAuthorEditview.text.toString(),
+            ))
+
+            addBookSuccesfully()
+        }
     }
 }

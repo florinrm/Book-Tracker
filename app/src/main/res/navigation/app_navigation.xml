@@ -25,10 +25,17 @@
             android:id="@+id/action_menuFragment_to_toReadFragment"
             app:destination="@id/toReadFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/addBookFragment"
         android:name="com.example.booktracker.addbook.AddBookFragment"
-        android:label="AddBookFragment" />
+        android:label="AddBookFragment">
+
+        <action
+            android:id="@+id/action_addBookFragment_to_menuFragment"
+            app:destination="@id/menuFragment" />
+    </fragment>
+
     <fragment
         android:id="@+id/loginFragment3"
         android:name="com.example.booktracker.login.LoginFragment"
