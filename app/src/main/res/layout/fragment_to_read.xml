@@ -8,10 +8,10 @@
         android:gravity="center_horizontal"
         android:orientation="vertical"
         android:scrollbars="vertical"
-        tools:context=".reading.ReadingListFragment">
+        tools:context=".toread.ToReadFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/reading_books_list"
+            android:id="@+id/to_read_books_list"
             android:name="AllToReadBooksRecycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

@@ -10,7 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import com.example.booktracker.MainActivity
+import com.example.booktracker.MenuActivity
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentLoginBinding
 
@@ -30,8 +30,10 @@ class LoginFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner, { user ->
             if (user != null) {
                 Toast.makeText(activity, "User logged in!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(activity, MainActivity::class.java)
+                val intent = Intent(activity, MenuActivity::class.java)
                 startActivity(intent)
+            } else {
+                Toast.makeText(activity, "Cannot login!", Toast.LENGTH_SHORT).show()
             }
         })
 
