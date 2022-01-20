@@ -38,7 +38,7 @@ class LoginFragment : Fragment() {
         })
 
         binding.createAccountButton.setOnClickListener {
-            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragment3ToSignUpFragment2())
         }
 
         binding.loginButton.setOnClickListener {

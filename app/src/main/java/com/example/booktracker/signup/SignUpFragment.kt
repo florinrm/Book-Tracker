@@ -1,6 +1,5 @@
 package com.example.booktracker.signup
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.booktracker.MenuActivity
+import androidx.navigation.fragment.findNavController
 import com.example.booktracker.R
 import com.example.booktracker.database.DatabaseRepository
 import com.example.booktracker.databinding.FragmentSignUpBinding
@@ -32,9 +31,7 @@ class SignUpFragment : Fragment() {
         viewModel.user.observe(viewLifecycleOwner, { user ->
             if (user != null) {
                 DatabaseRepository.createUser()
-                Toast.makeText(activity, "User created!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(activity, MenuActivity::class.java)
-                startActivity(intent)
+                findNavController().navigate(SignUpFragmentDirections.actionSignUpFragment2ToMenuFragment())
             }
         })
         binding.signupButton.setOnClickListener {
