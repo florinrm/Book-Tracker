@@ -2,7 +2,7 @@
     <string name="app_name">Book Tracker</string>
     <string name="book_tracker">Book Tracker</string>
     <string name="login">Login</string>
-    <string name="username">Username</string>
+    <string name="username">E-mail</string>
     <string name="password">Password</string>
     <string name="signup">Sign Up</string>
     <string name="create_account">Create a new account</string>
@@ -19,5 +19,5 @@
     <string name="grade">Grade</string>
     <string name="add_book">Add book</string>
     <string name="book_cover">Book cover</string>
-    <string name="nearby_libraries">Nearby libraries</string>
+    <string name="nearby_bookshops">Nearby book shops</string>
 </resources>

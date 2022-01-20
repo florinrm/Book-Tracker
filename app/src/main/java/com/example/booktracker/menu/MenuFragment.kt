@@ -67,7 +67,6 @@ class MenuFragment : Fragment() {
         }
 
         binding.checkBookShopsButton.setOnClickListener {
-            // TODO: launch Google Maps for nearby book shops
             val gmmIntentUri = Uri.parse("geo:0,0?q=book+shops")
             val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
             mapIntent.setPackage("com.google.android.apps.maps")

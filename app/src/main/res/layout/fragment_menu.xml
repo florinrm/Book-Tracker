@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
-            android:text="@string/nearby_libraries" />
+            android:text="@string/nearby_bookshops" />
 
         <Button
             android:id="@+id/sign_out_button"
