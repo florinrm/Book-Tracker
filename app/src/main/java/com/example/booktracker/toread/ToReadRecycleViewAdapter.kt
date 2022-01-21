@@ -2,6 +2,7 @@ package com.example.booktracker.toread
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.booktracker.databinding.BookItemBinding
@@ -30,6 +31,7 @@ class ToReadRecycleViewAdapter(
             val book = books[position]
             viewBinding.bookAuthorItem.text = book.author
             viewBinding.bookTitleItem.text = book.title
+            viewBinding.bookRatingItem.isVisible = false
         }
     }
 }

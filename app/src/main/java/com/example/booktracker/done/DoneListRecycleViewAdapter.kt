@@ -29,6 +29,7 @@ class DoneListRecycleViewAdapter(
             val book = books[position]
             viewBinding.bookAuthorItem.text = book.author
             viewBinding.bookTitleItem.text = book.title
+            viewBinding.bookRatingItem.rating = book.grade.toFloat()
         }
     }
 }
