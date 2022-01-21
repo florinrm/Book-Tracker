@@ -3,20 +3,20 @@ package com.example.booktracker.menu
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.KeyEvent
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentMenuBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class MenuFragment : Fragment() {
     private lateinit var binding: FragmentMenuBinding
-    private lateinit var viewModel: MenuViewModel
+    lateinit var viewModel: MenuViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,6 +24,8 @@ class MenuFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_menu, container, false)
         viewModel = ViewModelProvider(this).get(MenuViewModel::class.java)
+
+        setHasOptionsMenu(true)
 
         binding.menuModelView = viewModel
         setOnClickListeners()
@@ -44,14 +46,19 @@ class MenuFragment : Fragment() {
         return binding.root
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.sign_out_button) {
+            viewModel.logout()
+            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToLoginFragment3())
+            return true
+        }
+
+        return false
+    }
+
     private fun setOnClickListeners() {
         binding.addBookButton.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToAddBookFragment())
-        }
-
-        binding.signOutButton.setOnClickListener {
-            viewModel.logout()
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToLoginFragment3())
         }
 
         binding.seeReadBooksButton.setOnClickListener {
@@ -64,13 +71,6 @@ class MenuFragment : Fragment() {
 
         binding.seeToReadBooksButton.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToToReadFragment())
-        }
-
-        binding.checkBookShopsButton.setOnClickListener {
-            val gmmIntentUri = Uri.parse("geo:0,0?q=book+shops")
-            val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
         }
     }
 }
