@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentDoneListBinding
 import timber.log.Timber
@@ -31,6 +33,12 @@ class DoneListFragment : Fragment() {
     private fun initUi() {
         viewModel.loadBooks().observe(viewLifecycleOwner, { books ->
             binding.readBooksList.adapter = DoneListRecycleViewAdapter(books)
+            binding.readBooksList.addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayoutManager.VERTICAL
+                )
+            )
         })
     }
 }

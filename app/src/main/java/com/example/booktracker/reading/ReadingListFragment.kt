@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.booktracker.R
 import com.example.booktracker.databinding.FragmentReadingListBinding
 
@@ -29,6 +31,12 @@ class ReadingListFragment : Fragment() {
     private fun initUi() {
         viewModel.loadBooks().observe(viewLifecycleOwner, { books ->
             binding.readingBooksList.adapter = ReadingListRecycleViewAdapter(books)
+            binding.readingBooksList.addItemDecoration(
+                DividerItemDecoration(
+                    context,
+                    LinearLayoutManager.VERTICAL
+                )
+            )
         })
     }
 }
