@@ -14,10 +14,8 @@ import timber.log.Timber
 
 object DatabaseRepository {
     private const val USERS_TABLE = "users"
-    private const val URL =
-        "https://book-tracker-da0a1-default-rtdb.europe-west1.firebasedatabase.app/"
     private val database: DatabaseReference = FirebaseDatabase
-        .getInstance(URL)
+        .getInstance()
         .getReference(USERS_TABLE)
     private val firebaseUser = FirebaseAuth.getInstance().currentUser
 
