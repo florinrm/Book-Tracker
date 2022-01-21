@@ -26,7 +26,7 @@ MenuActivity.kt enables multiple functionalities - accessing settings to change 
 
 ![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/login.jpeg?raw=true)
 ![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/book_list.jpeg?raw=true)
-
+![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/add_book.jpeg?raw=true)
 
 ## Setup
 Go to the Firebase console and create a new project. Register the application (com.example.booktracker), then download the configuration file and place it under *src* directory. Now you can compile the application. Enjoy!
