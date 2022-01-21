@@ -15,15 +15,7 @@
         <action
             android:id="@+id/action_menuFragment_to_loginFragment3"
             app:destination="@id/loginFragment3" />
-        <action
-            android:id="@+id/action_menuFragment_to_doneListFragment"
-            app:destination="@id/doneListFragment" />
-        <action
-            android:id="@+id/action_menuFragment_to_readingListFragment"
-            app:destination="@id/readingListFragment" />
-        <action
-            android:id="@+id/action_menuFragment_to_toReadFragment"
-            app:destination="@id/toReadFragment" />
+
         <action
             android:id="@+id/action_menuFragment_to_settingsFragment"
             app:destination="@id/settingsFragment" />
@@ -60,21 +52,7 @@
             android:id="@+id/action_loginFragment3_to_menuFragment"
             app:destination="@id/menuFragment" />
     </fragment>
-    <fragment
-        android:id="@+id/doneListFragment"
-        android:name="com.example.booktracker.done.DoneListFragment"
-        android:label="fragment_done_list"
-        tools:layout="@layout/fragment_done_list"/>
-    <fragment
-        android:id="@+id/readingListFragment"
-        android:name="com.example.booktracker.reading.ReadingListFragment"
-        android:label="fragment_reading_list"
-        tools:layout="@layout/fragment_reading_list"/>
-    <fragment
-        android:id="@+id/toReadFragment"
-        android:name="com.example.booktracker.toread.ToReadFragment"
-        android:label="fragment_to_read"
-        tools:layout="@layout/fragment_to_read"/>
+
     <fragment
         android:id="@+id/signUpFragment2"
         android:name="com.example.booktracker.signup.SignUpFragment"

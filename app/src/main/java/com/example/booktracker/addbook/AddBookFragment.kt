@@ -159,7 +159,7 @@ class AddBookFragment : Fragment() {
 
     private fun addToReadBook() {
         if (checkFieldsValidity()) {
-            viewModel.addReadingBook(ReadingBook(
+            viewModel.addToReadBook(ToReadBook(
                 title = binding.addTitleEditview.text.toString(),
                 author = binding.addAuthorEditview.text.toString(),
             ))
