@@ -23,12 +23,7 @@ Each fragment interacts with one of the two DAOs for accessing the backend, usin
 MenuActivity.kt enables multiple functionalities - accessing settings to change app theme, open google maps to search nearby book stores and signing out. 
 
 ## Some Application Views
-
-![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/login.jpeg?raw=true){:height="40%" width="40%"}
-![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/book_list.jpeg?raw=true){:height="40%" width="40%"}
-
-![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/add_book.jpeg?raw=true){:height="40%" width="40%"}
-
+<img src="https://github.com/florinrm/Book-Tracker/blob/master/doc/views.jpeg" alt="drawing" width="300"/>
 
 ## Setup
 Go to the Firebase console and create a new project. Register the application (com.example.booktracker), then download the configuration file and place it under *src* directory. Now you can compile the application. Enjoy!
