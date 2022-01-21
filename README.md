@@ -7,6 +7,8 @@ On a high level, this system consists of an smartphone Android application which
 
 The mobile application communicates with the backend for registering new users, login, create book lists and read those lists. The app can be extended for book recommendation using AI algorithms on the accumulated data sets.
 
+![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/high_level_architecture.png?raw=true)
+
 ## Project Structure
 The ```Book-Tracker/app/src/main``` directory contains the application logic and frontend specification.
 
@@ -33,7 +35,4 @@ Go to the Firebase console and create a new project. Register the application (c
 This section presents the application prototype. The app consists of multiple screens with different navigation options between the screens. Each section and navigation possibility will be described furtheron.
 
 ![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/app_screens_prototype.png?raw=true)
-
-![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/high_level_architecture.png?raw=true)
-
 
