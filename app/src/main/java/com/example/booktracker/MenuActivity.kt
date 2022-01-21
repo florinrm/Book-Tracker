@@ -82,14 +82,12 @@ class MenuActivity : AppCompatActivity() {
                         }
 
                         searchView.isIconified = true
-                        MenuItemCompat.collapseActionView(searchItem)
 
                         menu.findItem(R.id.search_button).isVisible = false
                         menu.findItem(R.id.sort_books_button).isVisible = false
                         menu.findItem(R.id.nearby_libraries_button).isVisible = false
                         menu.findItem(R.id.settings_button).isVisible = false
                         menu.findItem(R.id.sign_out_button).isVisible = false
-
                     }
                 }
             }
@@ -120,7 +118,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     private fun setAppThemeMode(){
-        var sharedPreferencesName = "software.example.booktracker_preferences"
+        var sharedPreferencesName = "com.example.booktracker_preferences"
         val sharedPref = getSharedPreferences(sharedPreferencesName, MODE_PRIVATE)
 
         var accent = sharedPref.getString(SHR_PREF_KEY_THEME_MODE,
