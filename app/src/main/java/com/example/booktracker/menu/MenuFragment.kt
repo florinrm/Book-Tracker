@@ -46,6 +46,21 @@ class MenuFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val availableTabs = listOf(
+                "Finished",
+                "In Progress",
+                "For Future"
+            )
+
+        val adapter = MenuViewPagerAdapter(this)
+        binding.booksViewPager.adapter = adapter
+
+        TabLayoutMediator(binding.booksTabLayout, binding.booksViewPager) { tab, position ->
+            tab.text = adapter.bookListNames.get(position)
+        }.attach()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.sign_out_button) {
             viewModel.logout()
@@ -59,18 +74,6 @@ class MenuFragment : Fragment() {
     private fun setOnClickListeners() {
         binding.addBookButton.setOnClickListener {
             findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToAddBookFragment())
-        }
-
-        binding.seeReadBooksButton.setOnClickListener {
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToDoneListFragment())
-        }
-
-        binding.seeReadingBooksButton.setOnClickListener {
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToReadingListFragment())
-        }
-
-        binding.seeToReadBooksButton.setOnClickListener {
-            findNavController().navigate(MenuFragmentDirections.actionMenuFragmentToToReadFragment())
         }
     }
 }

@@ -1,73 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
         <variable
             name="menuModelView"
             type="com.example.booktracker.menu.MenuViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frBooks"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".menu.MenuFragment"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/app_title_menu"
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_book_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="?colorPrimary"
+            android:clickable="true"
+            android:contentDescription="@string/add_a_book"
+            android:focusable="true"
+            app:borderWidth="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/books_tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/ic_baseline_add_24"
+            app:tint="?colorOnPrimary" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/books_tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:tabMode="fixed" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/books_view_pager"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/playfair_display"
-            android:text="@string/book_tracker"
-            android:textAlignment="center"
-            android:textSize="35sp" />
-
-        <Button
-            android:id="@+id/see_read_books_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/read_books" />
-
-        <Button
-            android:id="@+id/see_to_read_books_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/to_read_books" />
-
-        <Button
-            android:id="@+id/see_reading_books_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/reading_books" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="bottom|end">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/addBookButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|end"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="32dp"
-                android:backgroundTint="?colorPrimary"
-                android:clickable="true"
-                android:contentDescription="@string/add_a_book"
-                android:focusable="true"
-                tools:borderWidth="0dp"
-                android:tint="@color/teal_200"
-                android:src="@drawable/ic_baseline_add_24" />
-        </RelativeLayout>
-
-    </LinearLayout>
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/books_tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

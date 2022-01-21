@@ -32,6 +32,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         Timber.plant(Timber.DebugTree())
         setContentView(R.layout.activity_menu)
+        setAppThemeMode()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
