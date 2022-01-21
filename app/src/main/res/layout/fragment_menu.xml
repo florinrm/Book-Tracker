@@ -48,29 +48,26 @@
             android:layout_marginTop="30dp"
             android:text="@string/reading_books" />
 
-        <Button
-            android:id="@+id/add_book_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/add_a_book" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom|end">
 
-        <Button
-            android:id="@+id/check_book_shops_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/nearby_bookshops" />
-
-        <Button
-            android:id="@+id/sign_out_button"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="@string/sign_out" />
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addBookButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="32dp"
+                android:backgroundTint="?colorPrimary"
+                android:clickable="true"
+                android:contentDescription="@string/add_a_book"
+                android:focusable="true"
+                tools:borderWidth="0dp"
+                android:tint="@color/teal_200"
+                android:src="@drawable/ic_baseline_add_24" />
+        </RelativeLayout>
 
     </LinearLayout>
 </layout>
