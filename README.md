@@ -16,7 +16,18 @@ The ```res``` directory contains application resources such as layouts, fragment
 
 The main application code is located in ```java/com/example/booktracker/``` directory.
 
+There are 2 main Data Access Objects(DAO) for interacting with the backend - AuthAppRepository and DatabaseRepository. Those can be found under ```auth``` and ```database``` directories.
+
+Each fragment interacts with one of the two DAOs for accessing the backend, using a dedicated model. Fragment and model implementations are located in ```addbook```, ```done```, ```login```, ```menu```, ```reading```, ```signup``` and ```toread``` directories.
  
+MenuActivity.kt enables multiple functionalities - accessing settings to change app theme, open google maps to search nearby book stores and signing out. 
+
+## Some Application Views
+
+![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/login.jpeg?raw=true)
+![alt text](https://github.com/florinrm/Book-Tracker/blob/master/doc/book_list.jpeg?raw=true)
+
+
 ## Setup
 Go to the Firebase console and create a new project. Register the application (com.example.booktracker), then download the configuration file and place it under *src* directory. Now you can compile the application. Enjoy!
 
